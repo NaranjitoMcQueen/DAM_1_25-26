@@ -40,8 +40,10 @@ public class Main {
 		p.add(new Doctor("Miguel", "12354678L", "Metge de Cap"));
 
 		// Mostra la informació de tota la llista utilitzant instanceof i sense utilitzar el mètode toString
-		pacients.instanceof();
-		
+		if(p instanceof ArrayList<Persona>) {
+		     if(((ArrayList<Persona>)p).size instanceof MyObject) {
+		         // do stuff 
+		     } 		
 		
 		/*
 		 * . Exemple: L’element 0 de la llista és un Pacient: nom=María López,
