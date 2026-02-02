@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-		// En el main de prova crea un arrayList d’objectes de la classe Persona. Afegeix almenys 4 persones.
+		// En el main de prova crea un arrayList d’objectes de la classe Persona.
+		// Afegeix almenys 4 persones.
 		ArrayList<Persona> persones = new ArrayList<>();
 
 		persones.add(new Persona("Arnau", "12345678A"));
@@ -28,28 +29,33 @@ public class Main {
 		// Mostra la llista sencera amb un forEach
 		for (Persona Persona : persones) {
 			System.out.print("\n" + Persona + " ");
-			}
-		
+		}
+
 		// Crea un arrayList de persones amb 2 pacients i 2 doctors.
 		ArrayList<Persona> p = new ArrayList<>();
-		
+
 		p.add(new Pacient("Raul", "12345678R", "Al·lèrgia a la pols"));
-		p.add(new Pacient("Brayan", "12345678Y", "Ausentisme"));
-				
+		p.add(new Pacient("Bryan", "12345678Y", "Ausentisme"));
+
 		p.add(new Doctor("Marga", "12354678M", "Metge de Cap"));
 		p.add(new Doctor("Miguel", "12354678L", "Metge de Cap"));
 
-		// Mostra la informació de tota la llista utilitzant instanceof i sense utilitzar el mètode toString
-		if(p instanceof ArrayList<Persona>) {
-		     if(((ArrayList<Persona>)p).size instanceof MyObject) {
-		         // do stuff 
-		     } 		
-		
-		/*
-		 * . Exemple: L’element 0 de la llista és un Pacient: nom=María López,
-		 * dni=12345678Z, historial=Al·lèrgia a la pols L’element 2 de la llista és un
-		 * Doctor: nom=Ana Gómez, dni=34534590K, especialitat=Cirurgia Estètica
-		 */
+		// Mostra la informació de tota la llista utilitzant instanceof i sense
+		// utilitzar el mètode toString
+		int i = 0;
+		System.out.println("\n");
+		for (Persona persona1 : p) {
+			if (persona1 instanceof Doctor) {
+				Doctor doctor = (Doctor) persona1;
+				System.out.println("L’element " + i + " de la llista és un Doctor: " + "nom=" + doctor.getNom()
+						+ ", dni=" + doctor.getDni() + ", especialitat=" + doctor.getEspecialitat());
+			} else if (persona1 instanceof Pacient) {
+				Pacient pacient = (Pacient) persona1;
+				System.out.println("L’element " + i + " de la llista és un Pacient: " + "nom=" + pacient.getNom()
+						+ ", dni=" + pacient.getDni() + ", historial=" + pacient.getHistorialMedic());
+			}
+			i++;
+		}
 
 	}
 
