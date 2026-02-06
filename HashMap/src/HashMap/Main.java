@@ -1,25 +1,21 @@
 package HashMap;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
+    public static void main(String[] args) {
+    	
+        boolean sortir = false;
+        Scanner sc = new Scanner(System.in);
+        Diccionari diccionari = new Diccionari();
 
-	public static void main(String[] args) {
-
-		boolean sortir = false;
-		Scanner sc = new Scanner(System.in);
-
-		Map<String, String> diccionari = new HashMap<String, String>();
-
-		diccionari.put("Acollida",
+		diccionari.afegir("Acollida",
 				"Rebuda d'una persona en el si de la societat en la qual s'estableix amb vocació de romandre-hi.");
-		diccionari.put("Bull", "Embotit elaborat farcint budell ample");
-		diccionari.put("Cotxe", "Vehicle per movilitat personal o amb acompanyament");
-		diccionari.put("Dinosaure", "Grup heterogeni de sauròpsids");
-		diccionari.put("Estocolm", "Capital del Regne de Suècia ");
-		diccionari.put("Funcionalitat", "Aventatge");
+		diccionari.afegir("Bull", "Embotit elaborat farcint budell ample");
+		diccionari.afegir("Cotxe", "Vehicle per movilitat personal o amb acompanyament");
+		diccionari.afegir("Dinosaure", "Grup heterogeni de sauròpsids");
+		diccionari.afegir("Estocolm", "Capital del Regne de Suècia ");
+		diccionari.afegir("Funcionalitat", "Aventatge");
 
 		while (sortir == false) {
 			System.out.println("Quina operació vols fer?");
@@ -37,36 +33,35 @@ public class Main {
 				String paraula = sc.nextLine();
 				System.out.println("Introdueix la definició:");
 				String definicio = sc.nextLine();
-
-				diccionari.put(paraula, definicio);
+				diccionari.afegir(paraula, definicio);
 				System.out.println("Paraula afegida.");
 				break;
 			case 2:
 				System.out.println("Introdueix la paraula a eliminar:");
 				paraula = sc.nextLine();
-				String eliminar = diccionari.remove(paraula);
-				if (eliminar != null) {
-					System.out.println("La paraula " + paraula + " s'ha eliminar correctament.");
+				String eliminat = diccionari.eliminar(paraula);
+				if (eliminat != null) {
+					System.out.println("La paraula " + eliminat + " s'ha eliminar correctament.");
 				} else System.out.println("No existeix la paraula.");
 				break;
 			case 3:
 				System.out.println("Introdueix la paraula a cercar la definició:");
 				paraula = sc.nextLine();
-				String cercar = diccionari.get(paraula);
+				String cercar = diccionari.cercar(paraula);
 				if (cercar != null) {
-				System.out.println(diccionari.get(paraula));
+				System.out.println(diccionari.cercar(paraula));
 				} else System.out.println("No existeix la paraula.");
 				break;
 			case 4:
-				System.out.println(diccionari);
+				System.out.println(diccionari.llistar() + "\n");
 				break;
 			case 5:
-				System.out.println(diccionari.size());
+				System.out.println(diccionari.tamany());
 				break;
 			default:
 
 			}
 		}
-		
+		sc.close();
 	}
 }
