@@ -65,11 +65,11 @@ public class Concessionari {
 		return mitjana / ConceVeh.size();
 	}
 
-	/*public boolean eliminarVehicle(Vehicle v) {
+	public boolean eliminarVehicle(Vehicle v) {
 	    return ConceVeh.remove(v);
-	}*/
+	}
 	
-	public boolean eliminarVehicle(String matricula, Vehicle v) {
+	public boolean eliminarVehicle(String matricula) {
 	    for (Vehicle v : ConceVeh) {
 	        if (v.getMatricula().equals(matricula)) {
 	            ConceVeh.remove(v);
