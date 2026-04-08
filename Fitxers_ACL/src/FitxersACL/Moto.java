@@ -12,6 +12,9 @@ public class Moto extends Vehicle {
 		this.tipus = tipus;
 	}
 
+	public Moto() {
+	}
+
 	// Cilindrada
 	public int getCilindrada() {
 		return cilindrada;

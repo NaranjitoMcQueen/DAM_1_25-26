@@ -1,1 +1,3 @@
-Total de paraules: 0
+test estes (Té 2 paraules)
+test test test (Té 3 paraules)
+Total de paraules: 5

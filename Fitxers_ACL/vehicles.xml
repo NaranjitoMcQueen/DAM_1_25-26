@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="21.0.9" class="java.beans.XMLDecoder">
+ <object class="java.util.TreeSet">
+  <void method="add">
+   <object class="FitxersACL.Moto">
+    <void property="cilindrada">
+     <int>500</int>
+    </void>
+    <void property="color">
+     <string>Negro</string>
+    </void>
+    <void property="km">
+     <int>12000</int>
+    </void>
+    <void property="marca">
+     <string>Honda</string>
+    </void>
+    <void property="matricula">
+     <string>1111MNO</string>
+    </void>
+    <void property="model">
+     <string>CB500F</string>
+    </void>
+    <void property="tipus">
+     <object class="java.lang.Enum" method="valueOf">
+      <class>FitxersACL.TipusMoto</class>
+      <string>Naked</string>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="FitxersACL.Cotxe">
+    <void property="color">
+     <string>Blanco</string>
+    </void>
+    <void property="esAutomatic">
+     <boolean>true</boolean>
+    </void>
+    <void property="km">
+     <int>45230</int>
+    </void>
+    <void property="marca">
+     <string>Toyota</string>
+    </void>
+    <void property="matricula">
+     <string>1234-ABC</string>
+    </void>
+    <void property="model">
+     <string>Corolla</string>
+    </void>
+    <void property="numPortes">
+     <int>5</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="FitxersACL.Cotxe">
+    <void property="color">
+     <string>Vermell</string>
+    </void>
+    <void property="km">
+     <int>12453</int>
+    </void>
+    <void property="marca">
+     <string>Dodge</string>
+    </void>
+    <void property="matricula">
+     <string>5195ACL</string>
+    </void>
+    <void property="model">
+     <string>Ram</string>
+    </void>
+    <void property="numPortes">
+     <int>5</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="FitxersACL.Moto">
+    <void property="cilindrada">
+     <int>292</int>
+    </void>
+    <void property="color">
+     <string>Gris</string>
+    </void>
+    <void property="km">
+     <int>18400</int>
+    </void>
+    <void property="marca">
+     <string>Yamaha</string>
+    </void>
+    <void property="matricula">
+     <string>5555XYZ</string>
+    </void>
+    <void property="model">
+     <string>XMAX 300</string>
+    </void>
+    <void property="tipus">
+     <object class="java.lang.Enum" method="valueOf">
+      <class>FitxersACL.TipusMoto</class>
+      <string>Scooter</string>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="FitxersACL.Cotxe">
+    <void property="color">
+     <string>Gris</string>
+    </void>
+    <void property="km">
+     <int>98210</int>
+    </void>
+    <void property="marca">
+     <string>Volkswagen</string>
+    </void>
+    <void property="matricula">
+     <string>5678DEF</string>
+    </void>
+    <void property="model">
+     <string>Golf</string>
+    </void>
+    <void property="numPortes">
+     <int>3</int>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

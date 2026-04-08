@@ -8,13 +8,15 @@ public class Cotxe extends Vehicle {
 	public Cotxe(String matricula, int km, String marca, String model, String color, int numPortes, boolean esAutomatic)
 			throws MatriculaInvalidaException {
 		super(matricula, km, marca, model, color);
-		if (numPortes < 1) {
+		if (numPortes > 0) {
 			this.numPortes = numPortes;
 		}
 		this.esAutomatic = esAutomatic;
 	}
 
-	// Num Portes
+	public Cotxe() {
+	}
+
 	public int getNumPortes() {
 		return numPortes;
 	}

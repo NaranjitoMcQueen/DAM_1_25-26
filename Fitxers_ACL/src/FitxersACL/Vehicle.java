@@ -1,8 +1,9 @@
 package FitxersACL;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Vehicle implements Comparable<Vehicle> {
+public abstract class Vehicle implements Comparable<Vehicle>, Serializable {
 
 	protected String matricula;
 	protected int km;
@@ -18,11 +19,15 @@ public abstract class Vehicle implements Comparable<Vehicle> {
 		if (km > 0) {
 			this.km = km;
 		} else {
-
+			throw new IllegalArgumentException("Kilometres incorrectes.");
 		}
 		this.marca = marca;
 		this.model = model;
 		this.color = color;
+	}
+
+	public Vehicle() {
+
 	}
 
 	// Matricula
