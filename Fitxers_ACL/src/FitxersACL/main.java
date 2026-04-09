@@ -154,7 +154,7 @@ public class main {
 				break;
 			case 5:
 				try {
-					System.out.print("Tipus (cotxe/moto): ");
+					System.out.print("Tipus cotxe/moto: ");
 					String t = sc.nextLine();
 					System.out.print("Matrícula: ");
 					String mat = sc.nextLine();
