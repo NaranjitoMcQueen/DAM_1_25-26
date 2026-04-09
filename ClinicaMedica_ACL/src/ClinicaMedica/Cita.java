@@ -2,8 +2,9 @@ package ClinicaMedica;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Objects;
 
-public class Cita {
+public class Cita implements Comparable<Cita> {
 
 	private Pacient pacient;
 	private Doctor doctor;
@@ -96,9 +97,29 @@ public class Cita {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cita other = (Cita) obj;
+		return Objects.equals(data, other.data) && Objects.equals(doctor, other.doctor)
+				&& Objects.equals(hora, other.hora) && Objects.equals(pacient, other.pacient);
+	}
+
+	@Override
 	public String toString() {
 		return "Cita [pacient=" + pacient.getNom() + ", doctor=" + doctor.getNom() + ", data=" + data + ", hora=" + hora
 				+ ", estat=" + estat + "]";
+	}
+
+	@Override
+	public int compareTo(Cita o) {
+		int data = this.data.compareTo(o.getData());
+		this.hora.compareTo(o.getHora());
+		return 0;
 	}
 
 }

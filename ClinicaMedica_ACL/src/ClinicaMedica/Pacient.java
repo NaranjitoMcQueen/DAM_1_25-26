@@ -1,6 +1,7 @@
 package ClinicaMedica;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Pacient extends Persona {
@@ -62,6 +63,23 @@ public class Pacient extends Persona {
 
 	public void setTotalPacients(int totalPacients) {
 		this.totalPacients = totalPacients;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(codi);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pacient other = (Pacient) obj;
+		return Objects.equals(codi, other.codi);
 	}
 
 	@Override

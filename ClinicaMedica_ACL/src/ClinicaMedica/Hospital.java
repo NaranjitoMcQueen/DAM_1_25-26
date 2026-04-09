@@ -55,7 +55,6 @@ public class Hospital {
 		return pacients.add(p);
 	}
 
-	// PREGUNTAR TEACHER
 	public void dadesPacients() {
 		for (Pacient p : pacients) {
 			System.out.println(p);
@@ -115,6 +114,13 @@ public class Hospital {
 
 	public boolean registrarCites(Cita c) {
 		return cites.add(c);
+	}
+
+	public boolean cancellarCita(Cita c) {
+		if (c.getEstat() == Estat.Pendent) {
+			c.confirmarCita();
+		}
+		return false;
 	}
 
 	@Override

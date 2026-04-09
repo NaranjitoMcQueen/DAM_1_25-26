@@ -1,6 +1,7 @@
 package ClinicaMedica;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Doctor extends Persona {
 
@@ -37,6 +38,23 @@ public class Doctor extends Persona {
 
 	public void setTotalDocs(int totalDocs) {
 		this.totalDocs = totalDocs;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(codi, especialitat);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Doctor other = (Doctor) obj;
+		return codi == other.codi && Objects.equals(especialitat, other.especialitat);
 	}
 
 	@Override
