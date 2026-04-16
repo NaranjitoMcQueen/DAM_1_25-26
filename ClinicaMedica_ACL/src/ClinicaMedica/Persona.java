@@ -10,16 +10,22 @@ public class Persona {
 	protected LocalDate dnaix;
 	protected String telefon;
 
-	public Persona(String nom, String dni, LocalDate dnaix, String telefon) {
+	public Persona(String nom, String dni, LocalDate dnaix, String telefon) throws IllegalArgumentException {
 		super();
 		this.nom = nom;
 		if (valDNI(dni)) {
 			this.dni = dni;
+			this.dnaix = dnaix;
+			if (valTelefon(telefon)) {
+				this.telefon = telefon;
+			}
+		} else {
+			throw new IllegalArgumentException("El DNI no compleix el format vàlid.");
 		}
-		this.dnaix = dnaix;
-		if (valTelefon(telefon)) {
-			this.telefon = telefon;
-		}
+	}
+
+	public Persona() {
+		super();
 	}
 
 	public String getNom() {

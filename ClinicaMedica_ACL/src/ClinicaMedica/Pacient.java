@@ -13,14 +13,19 @@ public class Pacient extends Persona {
 	public Pacient(String nom, String dni, LocalDate dnaix, String telefon, String codi, String historialMedic)
 			throws InvalidCodiPacientException {
 		super(nom, dni, dnaix, telefon);
-		if (!valCodi(codi)) {
+		if (valCodi(codi)) {
+			this.codi = codi;
+			this.historialMedic = historialMedic;
+			totalPacients++;
+		} else {
 			throw new InvalidCodiPacientException("El codi " + codi + " no és vàlid.");
 		}
-		this.codi = codi;
-		this.historialMedic = historialMedic;
-		totalPacients++;
 	}
 
+	public Pacient() {
+	}
+
+	// Codi
 	public String getCodi() {
 		return codi;
 	}
@@ -37,6 +42,7 @@ public class Pacient extends Persona {
 		return codi.matches(esquemaCodi);
 	}
 
+	// Telèfon
 	public static boolean valTelefon(String phone) {
 		if (phone == null) {
 			return true;
@@ -49,6 +55,7 @@ public class Pacient extends Persona {
 		return false;
 	}
 
+	// Historial Medic
 	public String getHistorialMedic() {
 		return historialMedic;
 	}
@@ -57,6 +64,7 @@ public class Pacient extends Persona {
 		this.historialMedic = historialMedic;
 	}
 
+	// Total Pacients
 	public int getTotalPacients() {
 		return totalPacients;
 	}
@@ -65,6 +73,7 @@ public class Pacient extends Persona {
 		this.totalPacients = totalPacients;
 	}
 
+	// Revisió
 	@Override
 	public int hashCode() {
 		return Objects.hash(codi);

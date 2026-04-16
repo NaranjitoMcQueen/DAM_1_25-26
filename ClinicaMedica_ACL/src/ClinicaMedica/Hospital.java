@@ -1,5 +1,7 @@
 package ClinicaMedica;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.TreeSet;
 
@@ -24,6 +26,12 @@ public class Hospital {
 		this.doctors = doctors;
 		this.especialitats = especialitats;
 		this.cites = cites;
+	}
+
+	public Hospital(String nom, String adreça) {
+		super();
+		this.nom = nom;
+		this.adreça = adreça;
 	}
 
 	public String getNom() {
@@ -63,6 +71,28 @@ public class Hospital {
 
 	public int totalPacients() {
 		return pacients.size();
+	}
+
+	public Pacient cercarPacient(String dni) {
+		if (dni.isEmpty()) {
+			return null;
+		}
+		for (Pacient p : pacients) {
+			if (p.getDni().equals(dni)) {
+				return p;
+			}
+		}
+		return null;
+	}
+
+	public boolean eliminarPacient(String dni) {
+		Pacient p = cercarPacient(dni);
+		for (Cita c : cites) {
+			if (c.getPacient().equals(p)) {
+				eliminarCita(c);
+			}
+		}
+		return false;
 	}
 
 	// Docs
@@ -116,11 +146,83 @@ public class Hospital {
 		return cites.add(c);
 	}
 
-	public boolean cancellarCita(Cita c) {
-		if (c.getEstat() == Estat.Pendent) {
-			c.confirmarCita();
+	public boolean eliminarCita(Cita c) {
+		for (Cita cit : cites) {
+			if (cit.equals(c)) {
+				cites.remove(c);
+				return true;
+			}
 		}
 		return false;
+	}
+
+	/**
+	 * 
+	 * @param dniP Otorgem el DNI del Pacient per cercar-ho.
+	 * @param data Otorgem la data de la cita per cercar-la.
+	 * @param hora Otorgem l'hora de la cita per cercar-la.
+	 * @return
+	 * @throws IllegalStateException
+	 */
+	public boolean cancellarCita(String dniP, LocalDate data, LocalTime hora) throws IllegalStateException {
+		for (Cita c : cites) {
+			if (c.getPacient().getDni().equals(dniP) && c.getData().equals(data) && c.getHora().equals(hora)) {
+				c.cancellarCita();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * 
+	 * @param dniD Otorgem el DNI del Doctor per cercar-ho.
+	 * @param data Otorgem la data de la cita per cercar-la.
+	 * @param hora Otorgem l'hora de la cita per cercar-la.
+	 * @return
+	 * @throws IllegalStateException
+	 */
+	public boolean modificarCita(String dniD, LocalDate data, LocalTime hora) throws IllegalStateException {
+		if (Cita.comprovarData(data, hora) == true) {
+			for (Cita c : cites) {
+				if (c.getDoctor().getDni().equals(dniD) && c.getData().equals(data) && c.getHora().equals(hora)) {
+					c.confirmarCita();
+					return true;
+				}
+			}
+		} else {
+			throw new IllegalStateException("No es pot modificar una cita passada");
+		}
+		return false;
+	}
+
+	/**
+	 * 
+	 * @param data Otorgem la data a cercar les cites.
+	 */
+	public void mostrarCites(LocalDate data) {
+		boolean existeixCita = false;
+		int citesData = 0;
+
+		for (Cita c : cites) {
+			if (c.getData().equals(data)) {
+				existeixCita = true;
+				citesData++;
+			}
+		}
+
+		if (!existeixCita) {
+			System.out.println("No hi ha cap cita agendada per la data " + data);
+		} else {
+			System.out.println("Hi han aquest nombre de cites: " + citesData + " per la data: " + data);
+			for (Cita c : cites) {
+				if (c.getData().equals(data)) {
+					String dniP = c.getPacient().getDni();
+					LocalTime hCita = c.getHora();
+					System.out.println("DNI Pacient: " + dniP + " - Hora: " + hCita);
+				}
+			}
+		}
 	}
 
 	@Override
@@ -128,11 +230,5 @@ public class Hospital {
 		return "Hospital [nom=" + nom + ", adreça=" + adreça + ", pacients=" + pacients + ", doctors=" + doctors
 				+ ", especialitats=" + especialitats + ", cites=" + cites + "]";
 	}
-
-	/*
-	 * • Eliminar pacient (s’han d’esborrar també les seves cites futures) •
-	 * Cancel·lar una cita prèviament agendada • Canviar l’estat d’una cita •
-	 * Mostrar cites per dia
-	 */
 
 }

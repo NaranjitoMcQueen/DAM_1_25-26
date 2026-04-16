@@ -1,6 +1,7 @@
 package ClinicaMedica;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
 
@@ -12,16 +13,20 @@ public class Cita implements Comparable<Cita> {
 	private LocalTime hora;
 	private Estat estat;
 
-	public Cita(Pacient pacient, Doctor doctor, LocalDate data, LocalTime hora) {
+	public Cita(Pacient pacient, Doctor doctor, LocalDate data, LocalTime hora) throws IllegalArgumentException {
 		super();
-		if (valEdatCita(pacient, doctor.getEspecialitat())) {
-			this.pacient = pacient;
-			this.doctor = doctor;
-			this.data = data;
-			this.hora = hora;
-			this.estat = Estat.Pendent;
+		if (comprovarData(data, hora)) {
+			if (valEdatCita(pacient, doctor.getEspecialitat())) {
+				this.pacient = pacient;
+				this.doctor = doctor;
+				this.data = data;
+				this.hora = hora;
+				this.estat = Estat.Pendent;
+			} else {
+				throw new IllegalArgumentException("El pacient no té l'edat permesa per a aquesta especialitat.");
+			}
 		} else {
-			throw new IllegalArgumentException("El pacient no té l'edat permesa per a aquesta especialitat.");
+			throw new IllegalArgumentException("La data de la cita ha de ser futura.");
 		}
 	}
 
@@ -49,6 +54,12 @@ public class Cita implements Comparable<Cita> {
 		this.data = data;
 	}
 
+	public static boolean comprovarData(LocalDate data, LocalTime hora) {
+		LocalDateTime ara = LocalDateTime.now();
+		LocalDateTime fechaHoraCita = LocalDateTime.of(data, hora);
+		return fechaHoraCita.isAfter(ara);
+	}
+
 	public LocalTime getHora() {
 		return hora;
 	}
@@ -72,6 +83,8 @@ public class Cita implements Comparable<Cita> {
 	public void cancellarCita() throws IllegalStateException {
 		if (this.estat != Estat.Pendent) {
 			throw new IllegalStateException("Només es poden cancel·lar cites pendents.");
+		} else if (this.estat != Estat.Realitzada) {
+			throw new IllegalStateException("No es pot cancel·lar una cita ja realitzada");
 		}
 		this.estat = Estat.Cancellada;
 	}
@@ -117,9 +130,10 @@ public class Cita implements Comparable<Cita> {
 
 	@Override
 	public int compareTo(Cita o) {
-		int data = this.data.compareTo(o.getData());
-		this.hora.compareTo(o.getHora());
-		return 0;
+		int compData = this.data.compareTo(o.getData());
+		if (compData != 0)
+			return compData;
+		return this.hora.compareTo(o.getHora());
 	}
 
 }
