@@ -1,0 +1,3 @@
+Client, 33445566J, Marta, Lopez Fernandez, 600333333, 12/07/1992, PREMIUM
+Client, 44556677P, Javier, Gomez Navarro, 600444444, 30/01/1988, VIP
+Client, 55667788D, Lucia, Torres Molina, null, 05/09/2000, BASICA

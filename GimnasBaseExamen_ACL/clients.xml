@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="21.0.7" class="java.beans.XMLDecoder">
+ <object class="java.util.TreeSet">
+  <void method="add">
+   <object class="gimnas.Client" id="Client0">
+    <void class="gimnas.Client" method="getField">
+     <string>membresia</string>
+     <void method="set">
+      <object idref="Client0"/>
+      <object class="java.lang.Enum" method="valueOf">
+       <class>gimnas.TipusMembresia</class>
+       <string>VIP</string>
+      </object>
+     </void>
+    </void>
+    <void property="cognoms">
+     <string>Ruiz Solis</string>
+    </void>
+    <void property="dataNaixement">
+     <string>15/08/1995</string>
+    </void>
+    <void property="dni">
+     <string>11223344B</string>
+    </void>
+    <void property="idClient">
+     <int>2</int>
+    </void>
+    <void property="nom">
+     <string>Carlos</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="gimnas.Client" id="Client1">
+    <void class="gimnas.Client" method="getField">
+     <string>membresia</string>
+     <void method="set">
+      <object idref="Client1"/>
+      <object class="java.lang.Enum" id="TipusMembresia0" method="valueOf">
+       <class>gimnas.TipusMembresia</class>
+       <string>BASICA</string>
+      </object>
+     </void>
+    </void>
+    <void property="cognoms">
+     <string>Garcia Rodriguez</string>
+    </void>
+    <void property="dataNaixement">
+     <string>10/05/2005</string>
+    </void>
+    <void property="dni">
+     <string>12345678Z</string>
+    </void>
+    <void property="nom">
+     <string>Ana</string>
+    </void>
+    <void property="telefon">
+     <string>600111111</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="gimnas.Client" id="Client2">
+    <void class="gimnas.Client" method="getField">
+     <string>membresia</string>
+     <void method="set">
+      <object idref="Client2"/>
+      <object idref="TipusMembresia0"/>
+     </void>
+    </void>
+    <void property="cognoms">
+     <string>Martinez Lopez</string>
+    </void>
+    <void property="dataNaixement">
+     <string>23/11/2018</string>
+    </void>
+    <void property="dni">
+     <string>22334455N</string>
+    </void>
+    <void property="idClient">
+     <int>3</int>
+    </void>
+    <void property="nom">
+     <string>Nuria</string>
+    </void>
+    <void property="telefon">
+     <string>600222222</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="gimnas.Client" id="Client3">
+    <void class="gimnas.Client" method="getField">
+     <string>membresia</string>
+     <void method="set">
+      <object idref="Client3"/>
+      <object class="java.lang.Enum" method="valueOf">
+       <class>gimnas.TipusMembresia</class>
+       <string>PREMIUM</string>
+      </object>
+     </void>
+    </void>
+    <void property="cognoms">
+     <string>Perez Solana</string>
+    </void>
+    <void property="dataNaixement">
+     <string>20/03/1998</string>
+    </void>
+    <void property="dni">
+     <string>87654321X</string>
+    </void>
+    <void property="idClient">
+     <int>1</int>
+    </void>
+    <void property="nom">
+     <string>Luis</string>
+    </void>
+    <void property="telefon">
+     <string>600222222</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
